@@ -30,13 +30,13 @@ const submitForm = () => {
         success: (result) => {
             if (result.statusCode === 201) {
                 alert('card post successful');
-                getAllCats();
+                getAllCards();
             }
         }
     });
 };
 
-function postCat(cat){
+function postCard(cat){
     $.ajax({
         url:'/api/card',
         type:'POST',
