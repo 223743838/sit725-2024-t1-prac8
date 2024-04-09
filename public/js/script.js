@@ -64,7 +64,7 @@ $(document).ready(function () {
         submitForm();
     })
     // console.log("inside ready"+formData)
-    addCards(cardList);
+    // addCards(cardList);
     $('.modal').modal();
     getAllCards();
 });
