@@ -27,9 +27,9 @@ async function runDB() {
         console.error(ex);
     }
 }
-async function postCard(card) {
+async function postCat(cat) {
     try {
-        const result = await collection.insertOne(card);
+        const result = await collection.insertOne(cat);
         return result;
     } catch (err) {
         console.error(err);
@@ -38,7 +38,7 @@ async function postCard(card) {
 }
 
 
-async function getAllCards() {
+async function getAllCats() {
     try {
         const cats = await collection.find({}).toArray();
         return cats;
@@ -53,10 +53,10 @@ app.get('/', function (req, res) {
     res.render('index.html');
 });
 
-app.post('/api/card', async (req, res) => {
+app.post('/api/cat', async (req, res) => {
     try {
         const card = req.body;
-        const result = await postCard(card);
+        const result = await postCat(card);
         res.json({ statusCode: 201, data: result, message: 'success' });
     } catch (err) {
         console.error(err);
@@ -66,10 +66,10 @@ app.post('/api/card', async (req, res) => {
 
 
 
-app.get('/api/cards', async (req, res) => {
+app.get('/api/cats', async (req, res) => {
     try {
-        const result = await getAllCards();
-        res.json({ statusCode: 200, data: result, message: 'get all cards successfully' });
+        const result = await getAllCats();
+        res.json({ statusCode: 200, data: result, message: 'get all cats successfully' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ statusCode: 500, message: 'Internal server error' });

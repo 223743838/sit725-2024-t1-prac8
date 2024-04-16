@@ -24,32 +24,32 @@ const submitForm = () => {
     console.log(formData);
 
     $.ajax({
-        url: '/api/card',
+        url: '/api/cat',
         type: 'POST',
         data: formData,
         success: (result) => {
             if (result.statusCode === 201) {
-                alert('card post successful');
+                alert('cat post successful');
                 getAllCards();
             }
         }
     });
 };
 
-function postCard(cat){
+function postCat(cat){
     $.ajax({
-        url:'/api/card',
+        url:'/api/cat',
         type:'POST',
         data:cat,
         success: (result)=>{
             if (result.statusCode === 201) {
-                alert('card added');
+                alert('cats added');
             }
         }
     });
 }
-function getAllCards(){
-    $.get('/api/cards', (result) => {
+function getAllCats(){
+    $.get('/api/cats', (result) => {
         if (result.statusCode === 200) {
             addCards(result.data);
         }
@@ -66,5 +66,5 @@ $(document).ready(function () {
     // console.log("inside ready"+formData)
     // addCards(cardList);
     $('.modal').modal();
-    getAllCards();
+    getAllCats();
 });
