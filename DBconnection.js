@@ -10,12 +10,4 @@ const client = new MongoClient(uri, {
     }
 });
 
-client.connect(err => {
-    if (err) {
-      console.error("Error connecting to MongoDB", err);
-      return;
-    }
-    console.log("Connected to MongoDB");
-  });
-
 module.exports = client;

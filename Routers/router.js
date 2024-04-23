@@ -1,13 +1,9 @@
-let express = require('express');
-let router = express.Router();
-let controller = require('../Controller/controller');
+var express = require("express");
+var router = express.Router();
+var controller = require('../controllers/controllers');
 
-router.post('/cat', function (req, res) {
-    controller.postCat(req, res);
-});
-
-router.get('/cats', (req, res) => {
-    controller.getAllCats(req, res);
-});
+router.post('/cat', controller.insertCat);
+router.get('/cats', controller.getAllCats);
+router.delete('/cat/:id', controller.deleteCat);
 
 module.exports = router;

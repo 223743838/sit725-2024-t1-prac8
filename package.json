@@ -1,17 +1,23 @@
 {
-  "name": "sit725-2024-t1-prac5",
+  "name": "sit725-2024-t1-prac6",
   "version": "1.0.0",
-  "description": "",
+  "description": "SIT 725 Prac 6",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --reporter spec",
     "start": "node server.js"
   },
   "author": "Sushma Singh",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.3.8",
     "express": "^4.19.1",
     "materialize-css": "^1.0.0-rc.2",
-    "mongodb": "^6.5.0"
-  }
+    "mocha": "^10.4.0",
+    "mongodb": "4.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "chai-http": "^4.4.0"
+}
 }

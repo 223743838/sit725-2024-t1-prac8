@@ -1,9 +1,6 @@
-let client = require('../DBconnection');
-let collection;
-
-const db = client.db("Cluster0");
-collection = db.collection("Cats");
-
+const ObjectId = require('mongodb').ObjectId;
+let client = require('../dbConnection');
+let collection = client.db().collection('Cats');
 
 function insertCat(cat, callback) {
     collection.insertOne(cat, callback);
@@ -13,4 +10,8 @@ function getAllCats(callback) {
     collection.find({}).toArray(callback);
 }
 
-module.exports = { insertCat, getAllCats }
+function deleteCat(id, callback) {
+    collection.deleteOne({ _id: new ObjectId(id) }, callback);
+}
+
+module.exports = { insertCat, getAllCats, deleteCat }
