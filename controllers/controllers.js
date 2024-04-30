@@ -1,34 +1,36 @@
-let collection = require('../models/cat');
 
-exports.insertCat = (req, res) => {
+const collection = require('../models/cat');
+
+const postCat = (req, res) => {
     let cat = req.body;
     collection.insertCat(cat, (err, result) => {
         if (!err) {
             res.json({ statusCode: 201, data: result, message: 'success' });
-        } else {
-            res.json({ statusCode: 500, message: 'server error' });
         }
     });
-}
+};
 
 
-exports.getAllCats = (req, res) => {
+const getAllCats = (req, res) => {
     collection.getAllCats((err, result) => {
         if (!err) {
-            res.json({ statusCode: 200, data: result, message: 'success' });
-        } else {
-            res.json({ statusCode: 500, message: 'server error' });
+            res.json({ statusCode: 200, data: result, message: 'get all cats successful' });
         }
     });
-}
+};
 
-exports.deleteCat = (req, res) => {
-    let id = req.params.id; 
-    collection.deleteCat(id, (err, result) => {
-        if (err) {
-            res.json({ statusCode: 500, message: 'server error' });
-        } else {
-            res.json({ statusCode: 200, data: result, message: 'success' });
+
+const deleteCat = (req, res) => {
+    let cat = req.body;
+    collection.deleteCat(cat, (err, result) => {
+        if (!err) {
+            res.json({ statusCode: 202, data: result, message: 'success' });
         }
     });
-}
+};
+
+module.exports = {
+    postCat: postCat,
+    getAllCats: getAllCats,
+    deleteCat : deleteCat
+};

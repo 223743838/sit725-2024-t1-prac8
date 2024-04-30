@@ -24,13 +24,13 @@ const submitForm = () => {
     console.log(formData);
 
     $.ajax({
-        url: '/api/cat',
+        url: '/api/',
         type: 'POST',
         data: formData,
         success: (result) => {
             if (result.statusCode === 201) {
                 alert('cat post successful');
-                getAllCards();
+                getAllCats();
             }
         }
     });
@@ -38,7 +38,7 @@ const submitForm = () => {
 
 function postCat(cat){
     $.ajax({
-        url:'/api/cat',
+        url:'/api/',
         type:'POST',
         data:cat,
         success: (result)=>{
@@ -49,7 +49,7 @@ function postCat(cat){
     });
 }
 function getAllCats(){
-    $.get('/api/cats', (result) => {
+    $.get('/api/', (result) => {
         if (result.statusCode === 200) {
             addCards(result.data);
         }
@@ -58,6 +58,10 @@ function getAllCats(){
         console.error(jqXHR.responseText);
     });
 }
+let socket = io();
+socket.on('number',(msg)=>{
+    console.log('Random Number: ' + msg);
+});
 $(document).ready(function () {
     $('.materialboxed').materialbox();
     $('#formSubmit').click(() => {
